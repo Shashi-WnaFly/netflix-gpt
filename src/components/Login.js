@@ -1,28 +1,75 @@
 import { BG_URL } from "../utils/constants.js";
 import Header from "./Header.js";
 const Login = () => {
-    return (
-        <div className="">
-            <div className="h-screen w-full relative">
-                <Header />
-                <img src={BG_URL} alt="bg-image" className=" z-0 top-0 left-0 absolute brightness-50 h-screen w-screen object-cover"/>
+  return (
+    <div className="flex justify-center bg-black">
+      <div className="h-screen w-full relative bg-black">
+        <Header />
+        <img
+          src={BG_URL}
+          alt="bg-image"
+          className=" z-0 top-0 left-0 absolute brightness-50 h-screen w-screen object-cover"
+        />
 
-                <div className="absolute left-1/2 z-10 mt-20 p-14 -translate-x-1/2 w-6/12 h-fit">
-                    {/* <div className=" bg-black h-full w-full">
-                        
-                    </div> */}
-                    <form className="text-white flex flex-col gap-6">
-                        <h1 className="text-3xl font-bold mb-4">Sign In</h1>
-                        <input type="text" placeholder="Email or mobile number" className="py-4 px-2 bg-transparent border-gray-500 border-2 rounded-sm"/>
-                        <input type="password" placeholder="Password" className="py-4 px-2 bg-transparent border-gray-500 border-2 rounded-sm" />
-                        <button className="bg-red-600 py-4 rounded-sm">Sign In</button>
-                        <p className="text-center">OR</p>
-                        <button className="py-4 bg-gray-700 opacity-45 text-opacity-100">Use a sign-in code</button>
-                    </form>
-                </div>
+        <div className="absolute left-1/2 z-10 mt-20 px-14 -translate-x-1/2 h-fit rounded-md">
+          <div className="p-16 w-[450px] relative before:bg-black before:absolute before:w-[450px] before:h-full before:left-0 before:opacity-75 before:top-0 before:rounded-md">
+            <form className="text-white flex flex-col gap-4 relative z-40">
+              <h1 className="text-[2rem] font-bold">Sign In</h1>
+              <input
+                type="text"
+                placeholder="Email or mobile number"
+                className="py-3 px-2 bg-transparent border-gray-500 border-2 rounded-sm"
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                className="py-3 px-2 bg-transparent border-gray-500 border-2 rounded-sm cursor-pointer"
+              />
+              <button className="bg-red-600 py-2 rounded-sm font-medium">
+                Sign In
+              </button>
+              <p className="text-center text-zinc-300">OR</p>
+              <div className="flex justify-center cursor-pointer before:w-full before:h-full before:bg-zinc-400 before:absolute before:opacity-30 relative before:rounded-sm before:hover:opacity-20">
+                <button className="py-2 text-center text-white relative font-semibold">
+                  Use a sign-in code
+                </button>
+              </div>
+              <p className=" hover:underline hover:text-zinc-300 cursor-pointer text-center">
+                Forgot password?
+              </p>
+            </form>
+
+            <div className="relative flex gap-5 flex-col">
+              <form className="text-white z-50 flex align-middle">
+                <input
+                  type="checkbox"
+                  id="rememberMe"
+                  className="w-4"
+                />
+                <label for="rememberMe" className="ml-3" >Remember me</label>
+              </form>
+              <p>
+                <span className="text-zinc-400">New to Netflix?{" "}</span>
+                <span className="text-white font-semibold hover:underline cursor-pointer">
+                  Sign up now
+                </span>
+              </p>
+              <p className="text-xs text-zinc-400">
+                <span>
+                  This page is protected by Google reCAPTCHA to ensure you're
+                  not a bot.{" "}
+                </span>
+                <span className="text-blue-500 hover:underline cursor-pointer">
+                  Learn more
+                </span>
+              </p>
             </div>
+          </div>
         </div>
-    )
-}
+      </div>
+      
+    </div>
+  );
+};
 
 export default Login;
