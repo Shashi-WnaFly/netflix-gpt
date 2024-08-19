@@ -1,9 +1,15 @@
+import { useState } from "react";
 import { BG_URL } from "../utils/constants.js";
 import Header from "./Header.js";
 const Login = () => {
+  const [isSignUpForm, setIsSignUpForm] = useState(false);
+
+  const handleSignOrSignUp = () => {
+    setIsSignUpForm(!isSignUpForm);
+  }
   return (
     <div className="flex justify-center bg-black">
-      <div className="h-screen w-full relative bg-black">
+      <div className="h-screen w-full relative">
         <Header />
         <img
           src={BG_URL}
@@ -12,9 +18,16 @@ const Login = () => {
         />
 
         <div className="absolute left-1/2 z-10 mt-20 px-14 -translate-x-1/2 h-fit rounded-md">
+        
           <div className="p-16 w-[450px] relative before:bg-black before:absolute before:w-[450px] before:h-full before:left-0 before:opacity-75 before:top-0 before:rounded-md">
             <form className="text-white flex flex-col gap-4 relative z-40">
-              <h1 className="text-[2rem] font-bold">Sign In</h1>
+              <h1 className="text-[2rem] font-bold">{isSignUpForm ? "Sign Up" : "Sign In"}</h1>
+              {isSignUpForm && (
+                <input
+                type="text"
+                placeholder="Full Name"
+                className="py-3 px-2 bg-transparent border-gray-500 border-2 rounded-sm"
+                />) }
               <input
                 type="text"
                 placeholder="Email or mobile number"
@@ -26,7 +39,7 @@ const Login = () => {
                 className="py-3 px-2 bg-transparent border-gray-500 border-2 rounded-sm cursor-pointer"
               />
               <button className="bg-red-600 py-2 rounded-sm font-medium">
-                Sign In
+                {isSignUpForm ? "Sign up" : "Sign In"}
               </button>
               <p className="text-center text-zinc-300">OR</p>
               <div className="flex justify-center cursor-pointer before:w-full before:h-full before:bg-zinc-400 before:absolute before:opacity-30 relative before:rounded-sm before:hover:opacity-20">
@@ -44,15 +57,15 @@ const Login = () => {
                 <input
                   type="checkbox"
                   id="rememberMe"
-                  className="w-4"
+                  className="w-4 text-white"
                 />
                 <label for="rememberMe" className="ml-3" >Remember me</label>
               </form>
               <p>
                 <span className="text-zinc-400">New to Netflix?{" "}</span>
-                <span className="text-white font-semibold hover:underline cursor-pointer">
-                  Sign up now
-                </span>
+                <button onClick={handleSignOrSignUp} className="text-white font-semibold hover:underline cursor-pointer">
+                  {isSignUpForm ? "Sign In now" : "Sign up now"}
+                </button>
               </p>
               <p className="text-xs text-zinc-400">
                 <span>
@@ -67,7 +80,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-      
+
     </div>
   );
 };
