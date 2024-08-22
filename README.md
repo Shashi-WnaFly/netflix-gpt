@@ -10,6 +10,7 @@
  - Sign Up Form
  - Form validation
  - useRef Hook
+ - deploy our app to production
 
 
 ## features
