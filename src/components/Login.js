@@ -38,7 +38,7 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode + " " + errorMessage);
+          setErrMsg(errorCode + " " + errorMessage);
         });
     } else {
       signInWithEmailAndPassword(auth, email.current.value, password.current.value)
@@ -50,7 +50,7 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode+'-'+errorMessage);
+          setErrMsg(errorCode+'-'+errorMessage);
         });
     }
   };
@@ -85,31 +85,31 @@ const Login = () => {
                   className="py-3 px-2 bg-transparent border-gray-500 border-2 rounded-sm"
                 />
               )}
-              {ErrMsg === "name" && (
+              {/* {ErrMsg === "name" && (
                 <p className="text-sm text-red-500 pl-2">
                   Name should be letters only and atleast 4 characters.
                 </p>
-              )}
+              )} */}
               <input
                 ref={email}
                 type="text"
                 placeholder="Email or mobile number"
                 className="py-3 px-2 bg-transparent border-gray-500 border-2 rounded-sm"
               />
-              {ErrMsg === "emailID" && (
+              {/* {ErrMsg === "emailID" && (
                 <p className="text-sm text-red-500 pl-2">
                   Email Id is not valid.
                 </p>
-              )}
+              )} */}
               <input
                 ref={password}
                 type="password"
                 placeholder="Password"
                 className="py-3 px-2 bg-transparent border-gray-500 border-2 rounded-sm cursor-pointer"
               />
-              {ErrMsg === "password" && (
+              {ErrMsg && (
                 <p className="text-sm text-red-500 pl-2">
-                  Password is not valid.
+                  {ErrMsg}
                 </p>
               )}
               <button

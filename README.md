@@ -11,6 +11,8 @@
  - Form validation
  - useRef Hook
  - deploy our app to production
+ - create sign in / sign up api
+ - created redux store
 
 
 ## features
