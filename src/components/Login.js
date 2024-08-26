@@ -5,9 +5,12 @@ import { formValidate } from "../utils/validate.js";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase.js";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice.js";
 
 const Login = () => {
   const [isSignUpForm, setIsSignUpForm] = useState(false);
@@ -15,6 +18,7 @@ const Login = () => {
   const name = useRef("");
   const email = useRef("");
   const password = useRef("");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const validation = () => {
@@ -33,10 +37,23 @@ const Login = () => {
         password.current.value
       )
         .then((userCredential) => {
-          // Signed up
           const user = userCredential.user;
+          updateProfile(user, {
+            displayName: name.current.value,
+            photoURL:
+              "https://avatars.githubusercontent.com/u/124153986?s=400&u=3fafe048ff2d9d36659e32a2a0e848cdc0056769&v=4",
+          })
+            .then(() => {
+              const {user, email, displayName, photoURL} = auth.currentUser;
+              dispatch(addUser({user: user, email: email, displayName: displayName, photoURL:photoURL}))
+              navigate("/browse");
+            })
+            .catch((error) => {
+              // An error occurred
+              setErrMsg(error.code + " " + error.message);
+            });
+          // Signed up
           console.log(user);
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -44,7 +61,11 @@ const Login = () => {
           setErrMsg(errorCode + " " + errorMessage);
         });
     } else {
-      signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
@@ -54,7 +75,7 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setErrMsg(errorCode+'-'+errorMessage);
+          setErrMsg(errorCode + "-" + errorMessage);
         });
     }
   };
@@ -111,11 +132,7 @@ const Login = () => {
                 placeholder="Password"
                 className="py-3 px-2 bg-transparent border-gray-500 border-2 rounded-sm cursor-pointer"
               />
-              {ErrMsg && (
-                <p className="text-sm text-red-500 pl-2">
-                  {ErrMsg}
-                </p>
-              )}
+              {ErrMsg && <p className="text-sm text-red-500 pl-2">{ErrMsg}</p>}
               <button
                 onClick={validation}
                 type="submit"
