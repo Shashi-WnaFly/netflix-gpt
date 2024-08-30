@@ -5,8 +5,8 @@ export const formValidate = (name, email, password, isSignUpForm) => {
     const validPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password);
 
     if(isSignUpForm && !validName) return "name";
-    if(!validEmail) return "emailID";
-    if(!validPassword) return "password";
+    if(!validEmail) return "emailID is not valid";
+    if(!validPassword) return "password is not valid";
 
     return null;
 }

@@ -8,7 +8,6 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase.js";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice.js";
 
@@ -19,7 +18,6 @@ const Login = () => {
   const email = useRef("");
   const password = useRef("");
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const validation = () => {
     const message = formValidate(
@@ -45,15 +43,13 @@ const Login = () => {
           })
             .then(() => {
               const {user, email, displayName, photoURL} = auth.currentUser;
-              dispatch(addUser({user: user, email: email, displayName: displayName, photoURL:photoURL}))
-              navigate("/browse");
+              dispatch(addUser({user: user, email: email, displayName: displayName, photoURL:photoURL}));
             })
             .catch((error) => {
               // An error occurred
               setErrMsg(error.code + " " + error.message);
             });
           // Signed up
-          console.log(user);
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -69,8 +65,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
