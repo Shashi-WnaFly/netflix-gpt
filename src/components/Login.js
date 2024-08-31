@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { BG_URL } from "../utils/constants.js";
+import { BG_URL, USER_AVATAR } from "../utils/constants.js";
 import Header from "./Header.js";
 import { formValidate } from "../utils/validate.js";
 import {
@@ -38,8 +38,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL:
-              "https://avatars.githubusercontent.com/u/124153986?s=400&u=3fafe048ff2d9d36659e32a2a0e848cdc0056769&v=4",
+            photoURL: USER_AVATAR,
           })
             .then(() => {
               const {user, email, displayName, photoURL} = auth.currentUser;
