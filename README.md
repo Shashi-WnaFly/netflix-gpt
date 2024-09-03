@@ -17,7 +17,8 @@
  - update profile after sign up
  - Fix Bug: after login photoURL and displayName is not updated
  - Fix Bug: if user is not logged in, user should not redirect to /browse vice-versa
-
+ - Register to TMDB & create an app & get access token
+ - get data from TMDB now playing movie list API
 
 ## features
 - Login Page
