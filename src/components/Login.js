@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { BG_URL, USER_AVATAR } from "../utils/constants.js";
 import Header from "./Header.js";
 import { formValidate } from "../utils/validate.js";
+import { IoLanguage } from "react-icons/io5";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -10,6 +11,7 @@ import {
 import { auth } from "../utils/firebase.js";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice.js";
+import { FaCaretDown } from "react-icons/fa";
 
 const Login = () => {
   const [isSignUpForm, setIsSignUpForm] = useState(false);
@@ -77,7 +79,7 @@ const Login = () => {
     setIsSignUpForm(!isSignUpForm);
   };
   return (
-    <div className="flex justify-center bg-black">
+    <div className="flex flex-col justify-center bg-black">
       <div className="h-screen w-full relative">
         <Header />
         <img
@@ -86,13 +88,13 @@ const Login = () => {
           className=" z-0 top-0 left-0 absolute brightness-50 h-screen w-screen object-cover"
         />
 
-        <div className="absolute left-1/2 z-10 mt-20 px-14 -translate-x-1/2 h-fit rounded-md">
-          <div className="p-16 w-[450px] relative before:bg-black before:absolute before:w-[450px] before:h-full before:left-0 before:opacity-75 before:top-0 before:rounded-md">
+        <div className="absolute left-1/2 z-10 mt-20 px-16 pb-16 -translate-x-1/2 h-fit rounded-md">
+          <div className="py-12 px-[4.2rem] w-[28.2rem] relative before:bg-black before:absolute before:w-[28.2rem] before:h-full before:left-0 before:opacity-70 before:top-0 before:rounded-md">
             <form
               onSubmit={(e) => e.preventDefault()}
               className="text-white flex flex-col gap-4 relative z-40"
             >
-              <h1 className="text-[2rem] font-bold">
+              <h1 className="text-[2rem] font-bold mb-4">
                 {isSignUpForm ? "Sign Up" : "Sign In"}
               </h1>
               {isSignUpForm && (
@@ -100,7 +102,7 @@ const Login = () => {
                   ref={name}
                   type="text"
                   placeholder="Full Name"
-                  className="py-3 px-2 bg-transparent border-gray-500 border-2 rounded-sm"
+                  className="py-4 px-2 bg-transparent border-gray-500 border rounded-sm"
                 />
               )}
               {/* {ErrMsg === "name" && (
@@ -112,7 +114,7 @@ const Login = () => {
                 ref={email}
                 type="text"
                 placeholder="Email or mobile number"
-                className="py-3 px-2 bg-transparent border-gray-500 border-2 rounded-sm"
+                className="py-4 px-2 bg-transparent border-gray-500 border rounded-sm"
               />
               {/* {ErrMsg === "emailID" && (
                 <p className="text-sm text-red-500 pl-2">
@@ -123,13 +125,13 @@ const Login = () => {
                 ref={password}
                 type="password"
                 placeholder="Password"
-                className="py-3 px-2 bg-transparent border-gray-500 border-2 rounded-sm cursor-pointer"
+                className="py-4 px-2 bg-transparent border-gray-500 border rounded-sm cursor-pointer"
               />
               {ErrMsg && <p className="text-sm text-red-500 pl-2">{ErrMsg}</p>}
               <button
                 onClick={validation}
                 type="submit"
-                className="bg-red-600 py-2 rounded-sm font-medium"
+                className="bg-red-600 py-2 rounded-sm font-semibold"
               >
                 {isSignUpForm ? "Sign up" : "Sign In"}
               </button>
@@ -145,7 +147,7 @@ const Login = () => {
             </form>
 
             <div className="relative flex gap-5 flex-col">
-              <form className="text-white z-50 flex align-middle">
+              <form className="text-white z-50 flex align-middle mt-3">
                 <input
                   type="checkbox"
                   id="rememberMe"
@@ -174,6 +176,19 @@ const Login = () => {
             </div>
           </div>
         </div>
+      </div>
+      
+      <div className="text-zinc-400 mt-64 w-10/12 mx-auto mb-20 px-12">
+        <h1>Question? <span className="hover:underline cursor-pointer">Call 000-800-919-1694</span></h1>
+        <div className="underline grid grid-cols-4 gap-y-6 gap-x-2 mt-4 text-sm ">
+          <div className="cursor-pointer">FAQ</div>
+          <div className="cursor-pointer">Help Center</div>
+          <div className="cursor-pointer">Terms of Use</div>
+          <div className="cursor-pointer">Privacy</div>
+          <div className="cursor-pointer">Cookie Preferences</div>
+          <div className="cursor-pointer">Corporate Information</div>
+        </div>
+        <button className="text-white border border-zinc-400 py-2 px-4 mt-6 flex items-center gap-1 rounded-lg"><IoLanguage /> English <FaCaretDown /></button>
       </div>
     </div>
   );
