@@ -3,6 +3,7 @@ import { BG_URL, USER_AVATAR } from "../utils/constants.js";
 import Header from "./Header.js";
 import { formValidate } from "../utils/validate.js";
 import { IoLanguage } from "react-icons/io5";
+import { FaCaretDown } from "react-icons/fa";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -11,7 +12,6 @@ import {
 import { auth } from "../utils/firebase.js";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice.js";
-import { FaCaretDown } from "react-icons/fa";
 
 const Login = () => {
   const [isSignUpForm, setIsSignUpForm] = useState(false);
