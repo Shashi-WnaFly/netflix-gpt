@@ -5,6 +5,7 @@ import SecondaryContainer from "./SecondaryContainer";
 import { useSelector } from "react-redux";
 
 const Browse = () => {
+  useNowPlayingMovies();
 
   return (
     <div>
