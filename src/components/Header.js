@@ -41,7 +41,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="w-full absolute z-10 flex align-middle bg-transparent">
+    <div className="w-full absolute z-10 flex align-middle bg-transparent bg-gradient-to-b from-black">
       <div className="w-full mx-auto ml-40">
         <img src={LOGO} alt="logo" className="w-48" />
       </div>
@@ -54,7 +54,7 @@ const Header = () => {
         />
         <button
           onClick={handleSignOut}
-          className="ml-2 border-[1px] p-1 border-red-400 cursor-pointer font-semibold text-sm"
+          className="ml-2 border-[1px] p-1 border-red-400 cursor-pointer font-semibold text-sm text-white"
         >
           (Sign Out)
         </button>
