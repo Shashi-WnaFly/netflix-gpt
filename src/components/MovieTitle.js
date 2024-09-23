@@ -7,7 +7,7 @@ const MovieTitle = ({title, overview}) => {
             <p className="w-1/3 text-gray-200">{overview}</p>
             <div className="flex gap-4 font-semibold">
                 <button className="px-14 py-4 rounded-lg bg-white text-black hover:opacity-80">Play</button>
-                <button className="px-12 py-4 rounded-lg bg-gray-500 text-white hover:bg-white">More Info</button>
+                <button className="px-12 py-4 rounded-lg bg-gray-500 text-white hover:opacity-80">More Info</button>
             </div>
         </div>
     )
