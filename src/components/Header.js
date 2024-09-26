@@ -41,7 +41,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="w-full absolute z-10 flex align-middle bg-transparent bg-gradient-to-b from-black">
+    <div className="w-screen absolute z-10 flex align-middle bg-transparent bg-gradient-to-b from-black">
       <div className="w-full mx-auto ml-40">
         <img src={LOGO} alt="logo" className="w-48" />
       </div>

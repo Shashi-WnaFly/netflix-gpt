@@ -6,10 +6,10 @@ import MovieBackground from "./MovieBackground";
 const MainContainer = () => {
   const movies = useSelector((store) => store.movies?.NowPlayingMovies);
   if (!movies) return;
-  const mainMovie = movies[1];
+  const mainMovie = movies[0];
   const {original_title, overview, id} = mainMovie;
   return (
-    <div>
+    <div className="w-screen relative">
       <MovieTitle title={original_title} overview={overview}/>
       <MovieBackground movieId={id}/>
     </div>
