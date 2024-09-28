@@ -8,8 +8,8 @@ const SecondaryContainer = () => {
     <div className='bg-black'>
       <Category genre={"Now Playing"} moviesList={movies?.NowPlayingMovies} />
       <Category genre={"Popular"} moviesList={movies?.PopularMovies} />
-      {/* <Category genre={"Now Playing"} moviesList={movies?.NowPlayingMovies} />
-      <Category genre={"Now Playing"} moviesList={movies?.NowPlayingMovies} /> */}
+      <Category genre={"Top Rated"} moviesList={movies?.TopRatedMovies} />
+      <Category genre={"UpComing"} moviesList={movies?.UpComingMovies} />
     </div>
   )
 }
