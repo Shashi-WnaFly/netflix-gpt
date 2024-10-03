@@ -12,7 +12,7 @@ const Browse = () => {
   useTopRatedMovies();
   useUpComingMovies();
   return (
-    <div className=" relative bg-black">
+    <div className=" relative bg-black overflow-clip">
       <Header />
       <MainContainer />
       <SecondaryContainer />
