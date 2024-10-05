@@ -5,19 +5,22 @@ import { auth } from "../utils/firebase.js";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice.js";
+import { GPTSearchPage } from "../utils/GPTSearch.js";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector( store => store.user )
+  const user = useSelector((store) => store.user);
 
   const handleSignOut = () => {
-    signOut(auth).then(() => {
-      // Sign-out successful.
-    }).catch(() => {
-      navigate("/error");
-      // An error happened.
-    });
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch(() => {
+        navigate("/error");
+        // An error happened.
+      });
   };
 
   useEffect(() => {
@@ -35,30 +38,35 @@ const Header = () => {
         navigate("/browse");
       } else {
         dispatch(removeUser());
-        navigate("/")
+        navigate("/");
       }
     });
   }, []);
 
+  const handleGPTSearchPage = () => {
+    dispatch(GPTSearchPage());
+  }
+
   return (
-    <div className="w-screen absolute z-10 flex align-middle bg-transparent bg-gradient-to-b from-black">
-      <div className="w-full mx-auto ml-40">
+    <div className="w-screen absolute z-10 flex justify-between bg-transparent bg-gradient-to-b from-black">
+      <div className="ml-10">
         <img src={LOGO} alt="logo" className="w-48" />
       </div>
 
-      {user && (<div className="flex mr-16 items-center whitespace-nowrap">
-        <img
-          className="w-16 text-white"
-          src={user?.photoURL}
-          alt="profile"
-        />
-        <button
-          onClick={handleSignOut}
-          className="ml-2 border-[1px] p-1 border-red-400 cursor-pointer font-semibold text-sm text-white"
-        >
-          (Sign Out)
-        </button>
-      </div>)}
+      {user && (
+        <div className="flex py-5 px-5 whitespace-nowrap w-max gap-3 mr-10">
+          <button className=" text-white bg-purple-700 px-4 rounded-md active:opacity-90" onClick={handleGPTSearchPage}>
+            GPT Search
+          </button>
+            <img src={user?.photoURL} alt="profile" />
+          <button
+            onClick={handleSignOut}
+            className="px-4 rounded-md border-[1px] border-red-600 hover:text-red-600 hover:border-white cursor-pointer font-semibold text-sm text-white"
+          >
+            (Sign Out)
+          </button>
+        </div>
+      )}
     </div>
   );
 };
