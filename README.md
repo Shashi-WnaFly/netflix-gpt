@@ -26,7 +26,10 @@
  - Create a custom hook for Movies videos
  - Update store with trailer of first movie
  - Embedded the youtube video and make it autoplay and mute
- - 
+ - Create GPTSearch Slice
+ - Create toggle feature using redux store
+ - Create GPTSearchPage, GPTSearchBar & GPTMoviesSuggestion
+ 
 ## features
 - Login Page
     - Sign In / Sign Up Form
