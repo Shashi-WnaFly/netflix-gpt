@@ -55,7 +55,7 @@ const Header = () => {
 
       {user && (
         <div className="flex py-5 px-5 whitespace-nowrap w-max gap-3 mr-10">
-          <button className=" text-white bg-purple-700 px-4 rounded-md active:opacity-90" onClick={handleGPTSearchPage}>
+          <button className=" text-white bg-purple-800 px-4 rounded-md active:opacity-90" onClick={handleGPTSearchPage}>
             GPT Search
           </button>
             <img src={user?.photoURL} alt="profile" />

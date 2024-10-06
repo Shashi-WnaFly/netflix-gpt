@@ -5,8 +5,11 @@ import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 import usePopularMovies from "../hooks/usePopularMovies";
 import useTopRatedMovies from "../hooks/useTopRatedMovies";
 import useUpComingMovies from "../hooks/useUpComingMovies";
+import { useSelector } from "react-redux";
+import GPTSearchPage from "./GPTSearchPage";
 
 const Browse = () => {
+  const GPTSearchView = useSelector((store) => store.gpt.GPTSearchView);
   useNowPlayingMovies();
   usePopularMovies();
   useTopRatedMovies();
@@ -14,8 +17,14 @@ const Browse = () => {
   return (
     <div className=" relative bg-black overflow-clip">
       <Header />
-      <MainContainer />
-      <SecondaryContainer />
+      {GPTSearchView ? (
+        <GPTSearchPage />
+      ) : (
+        <>
+          <MainContainer />
+          <SecondaryContainer />
+        </>
+      )}
     </div>
   );
 };
