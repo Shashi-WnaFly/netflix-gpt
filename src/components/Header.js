@@ -1,16 +1,19 @@
 import React, { useEffect } from "react";
-import { LOGO } from "../utils/constants.js";
+import { LOGO, SUPPORTED_LANG } from "../utils/constants.js";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/firebase.js";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice.js";
 import { GPTSearchPage } from "../utils/GPTSearch.js";
+import { changeLanguage } from "../utils/ConfigSlice.js";
+import languageConstant from "../utils/languageConstant.js";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
+  const userLang = useSelector((store) => store.config.lang);
 
   const handleSignOut = () => {
     signOut(auth)
@@ -45,6 +48,10 @@ const Header = () => {
 
   const handleGPTSearchPage = () => {
     dispatch(GPTSearchPage());
+  };
+
+  const handleLangChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
   }
 
   return (
@@ -55,15 +62,23 @@ const Header = () => {
 
       {user && (
         <div className="flex py-5 px-5 whitespace-nowrap w-max gap-3 mr-10">
-          <button className=" text-white bg-purple-800 px-4 rounded-md active:opacity-90" onClick={handleGPTSearchPage}>
-            GPT Search
+          <select  onChange={handleLangChange} className="px-3 bg-gray-600 text-white border-black border-[1px] outline-none rounded-md">
+            {SUPPORTED_LANG.map((lang) => (
+              <option key={lang.identifier} value={lang.identifier}>{lang.name}</option>
+            ))}
+          </select>
+          <button
+            className=" text-white bg-purple-800 px-4 rounded-md active:opacity-90"
+            onClick={handleGPTSearchPage}
+          >
+            {languageConstant[userLang].GptSearch}
           </button>
-            <img src={user?.photoURL} alt="profile" />
+          <img src={user?.photoURL} alt="profile" />
           <button
             onClick={handleSignOut}
             className="px-4 rounded-md border-[1px] border-red-600 hover:text-red-600 hover:border-white cursor-pointer font-semibold text-sm text-white"
           >
-            (Sign Out)
+            ({languageConstant[userLang].signOut})
           </button>
         </div>
       )}
