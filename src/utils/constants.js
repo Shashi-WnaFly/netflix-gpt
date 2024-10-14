@@ -23,3 +23,6 @@ export const SUPPORTED_LANG = [
   { identifier: "hin", name: "Hindi" },
   { identifier: "spanish", name: "Spanish" },
 ];
+
+export const NETFLIX_GPT_KEY =
+  "";

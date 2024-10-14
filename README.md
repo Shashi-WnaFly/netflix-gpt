@@ -29,6 +29,8 @@
  - Create GPTSearch Slice
  - Create toggle feature using redux store
  - Create GPTSearchPage, GPTSearchBar & GPTMoviesSuggestion
+ - Multi-language feature in our app
+ - Integrate GPT APIs
  
 ## features
 - Login Page
