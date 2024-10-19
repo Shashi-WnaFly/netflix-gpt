@@ -1,4 +1,5 @@
 import React from "react";
+import { FaPlay } from "react-icons/fa";
 
 const MovieTitle = ({title, overview}) => {
     return (
@@ -6,8 +7,8 @@ const MovieTitle = ({title, overview}) => {
             <h1 className=" text-5xl font-bold">{title}</h1>
             <p className="w-1/3 text-gray-200">{overview}</p>
             <div className="flex gap-4 font-semibold">
-                <button className="px-14 py-4 rounded-lg bg-white text-black hover:opacity-80">Play</button>
-                <button className="px-12 py-4 rounded-lg bg-gray-500 text-white hover:opacity-80">More Info</button>
+                <button className=" flex items-center gap-2 px-14 py-4 rounded-lg text-white bg-stone-800 hover:opacity-80"><span className="text-2xl text-red-600 "><FaPlay /></span>Play</button>
+                <button className="px-12 py-4 rounded-lg bg-stone-800 text-white hover:opacity-80">More Info</button>
             </div>
         </div>
     )
