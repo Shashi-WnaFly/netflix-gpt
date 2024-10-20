@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { API_OPTIONS } from "../utils/constants";
 
-const useMovieDetails = ({ movie_id }) => {
+const useMovieDetails = (movie_id) => {
     
     const details = async () => {
         const data = await fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=en-US`, API_OPTIONS);
@@ -10,7 +10,7 @@ const useMovieDetails = ({ movie_id }) => {
     }
     
     useEffect(() => {
-        if(movie_id) details();
+        details();
     }, [])
 
 }
