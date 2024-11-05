@@ -1,13 +1,9 @@
-import { useNavigate, useParams } from "react-router-dom";
-import useMovieDetails from "../hooks/useMovieDetails";
 import { IMG_CDN_LINK } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { changeMovieTrailerId } from "../utils/moviesSlice";
 
 const MovieCard = ({ poster_path, movieId }) => {
   const dispatch = useDispatch();
-//   const movieId = useParams();
-//   console.log(movieId);
   const handleCardClick = () => {
     dispatch(changeMovieTrailerId(movieId));
   };

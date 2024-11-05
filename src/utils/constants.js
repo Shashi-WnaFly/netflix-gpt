@@ -24,5 +24,3 @@ export const SUPPORTED_LANG = [
   { identifier: "spanish", name: "Spanish" },
 ];
 
-export const NETFLIX_GPT_KEY =
-  "";

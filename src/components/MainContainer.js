@@ -8,13 +8,11 @@ const MainContainer = () => {
   const dispatch = useDispatch();
   const movies = useSelector((store) => store.movies?.NowPlayingMovies);
   if (!movies) return;
-  const mainMovie = movies[0];
-  const {original_title, overview, id} = mainMovie;
-  
+  const {id} = movies[0];
   dispatch(changeMovieTrailerId(id));
   return (
     <div className="w-screen relative">
-      <MovieTitle title={original_title} overview={overview}/>
+      <MovieTitle />
       <MovieBackground />
     </div>
   );
