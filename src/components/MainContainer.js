@@ -11,7 +11,7 @@ const MainContainer = () => {
   const {id} = movies[0];
   dispatch(changeMovieTrailerId(id));
   return (
-    <div className="w-screen relative">
+    <div className="relative">
       <MovieTitle />
       <MovieBackground />
     </div>

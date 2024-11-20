@@ -11,7 +11,6 @@ const GPTSearchPage = () => {
             <div className="relative">
                 <GPTSearchBar />
                 <GPTMoviesSuggestion />
-
             </div>
         </div>
     )
