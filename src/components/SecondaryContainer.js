@@ -9,7 +9,7 @@ const SecondaryContainer = () => {
       <Category genre={"Now Playing"} moviesList={movies?.NowPlayingMovies} />
       <Category genre={"Popular"} moviesList={movies?.PopularMovies} />
       <Category genre={"Top Rated"} moviesList={movies?.TopRatedMovies} />
-      <Category genre={"UpComing"} moviesList={movies?.UpComingMovies} />
+      <Category genre={"Upcoming"} moviesList={movies?.UpComingMovies} />
     </div>
   )
 }

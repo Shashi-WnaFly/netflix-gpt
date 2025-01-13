@@ -10,7 +10,7 @@ const MovieTitle = () => {
   const {original_title, overview} = details;
 
   return (
-    <div className=" aspect-video pt-[15%] px-10 flex flex-col gap-6 absolute top-0 left-0 text-white bg-gradient-to-r from-black">
+    <div className=" w-full aspect-video pt-[15%] px-10 flex flex-col gap-6 absolute top-0 left-0 text-white bg-gradient-to-r from-black">
       <h1 className=" text-5xl font-bold">{original_title}</h1>
       <p className="w-1/3 text-gray-200">{overview}</p>
       <div className="flex gap-4 font-semibold">
