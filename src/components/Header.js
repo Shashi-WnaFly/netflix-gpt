@@ -55,13 +55,13 @@ const Header = () => {
   }
 
   return (
-    <div className="w-screen absolute z-10 left-0 top-0 flex md:justify-between md:flex-row flex-col md:bg-transparent bg-gradient-to-b from-black">
+    <div className=" text-base md:text-lg w-screen absolute z-10 left-0 top-0 flex md:justify-between md:flex-row flex-col md:bg-transparent bg-gradient-to-b from-black">
       <div className=" mx-auto md:ml-10">
         <img src={LOGO} alt="logo" className="w-48" />
       </div>
 
       {user && (
-        <div className="flex md:py-5 px-5 whitespace-nowrap w-max gap-3 mr-10">
+        <div className=" flex justify-between md:py-5 px-5 whitespace-nowrap md:w-max md:gap-3 md:mr-10">
           <select  onChange={handleLangChange} className="px-3 bg-gray-600 text-white border-black border-[1px] outline-none rounded-md">
             {SUPPORTED_LANG.map((lang) => (
               <option key={lang.identifier} value={lang.identifier}>{lang.name}</option>
@@ -76,7 +76,7 @@ const Header = () => {
           <img src={user?.photoURL} alt="profile" />
           <button
             onClick={handleSignOut}
-            className="px-4 rounded-md border-[1px] border-red-600 hover:text-red-600 hover:border-white cursor-pointer font-semibold text-sm text-white"
+            className=" px-4 rounded-md border-[1px] border-red-600 hover:text-red-600 hover:border-white cursor-pointer font-semibold text-white"
           >
             ({languageConstant[userLang].signOut})
           </button>
