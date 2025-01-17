@@ -10,12 +10,10 @@ const GPTSearchBar = () => {
   const inData = useRef();
 
   const handleGPTSearch = async () => {
-    console.log(inData.current.value);
 
     const data = await fetch(`https://api.themoviedb.org/3/search/movie?query=${inData.current.value}`, API_OPTIONS);
     const result = await data.json();
 
-    console.log(result);
     const gptQuery = "Act as a Movie Recommendation System and suggest some movies for the query: "+inData.current.value+". give me names of 5 movies only, comma seperated like the example result given ahead. Example Result: Gadar, Border, Krish, koi mil gaya, hum aapke hai kon"
 
     const gptResults = await openAi.chat.completions.create({
@@ -26,19 +24,19 @@ const GPTSearchBar = () => {
   };
 
   return (
-    <div className="z-20 pt-[10%] flex justify-center">
+    <div className=" text-md md:text-lg z-20 pt-[30%] md:pt-[10%] flex md:justify-center">
       <form
-        className=" bg-black w-1/2 p-6 grid grid-cols-12 rounded-lg gap-2 "
+        className=" bg-black w-full md:w-1/2 p-6 grid grid-cols-12 rounded-lg gap-2 "
         onSubmit={(e) => e.preventDefault()}
       >
         <input
           ref={inData}
           type="text"
           placeholder={languageConstant[userLang].PlaceHolderText}
-          className="p-4 col-span-9 rounded-lg bg-slate-100 outline-none text-lg font-semibold"
+          className="p-4 col-span-9 rounded-lg bg-slate-100 outline-none md:text-lg font-semibold"
         />
         <button
-          className="col-span-3 p-4 bg-red-600 rounded-lg text-white font-semibold text-lg"
+          className="col-span-3 p-4 bg-red-600 rounded-lg text-white font-semibold"
           onClick={handleGPTSearch}
         >
           {languageConstant[userLang].Search}

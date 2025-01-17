@@ -55,13 +55,13 @@ const Header = () => {
   }
 
   return (
-    <div className="w-screen absolute z-10 left-0 top-0 flex justify-between bg-transparent bg-gradient-to-b from-black">
-      <div className="ml-10">
+    <div className="w-screen absolute z-10 left-0 top-0 flex md:justify-between md:flex-row flex-col md:bg-transparent bg-gradient-to-b from-black">
+      <div className=" mx-auto md:ml-10">
         <img src={LOGO} alt="logo" className="w-48" />
       </div>
 
       {user && (
-        <div className="flex py-5 px-5 whitespace-nowrap w-max gap-3 mr-10">
+        <div className="flex md:py-5 px-5 whitespace-nowrap w-max gap-3 mr-10">
           <select  onChange={handleLangChange} className="px-3 bg-gray-600 text-white border-black border-[1px] outline-none rounded-md">
             {SUPPORTED_LANG.map((lang) => (
               <option key={lang.identifier} value={lang.identifier}>{lang.name}</option>

@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 const useUpComingMovies = () => {
   const dispatch = useDispatch();
-  const upcoming = useSelector((store) => store.movies.UpComingMovies);
+  const UpComingMovies = useSelector((store) => store.movies.UpComingMovies);
   
   const getUpComingMovies = async () => {
     const getMovies = await fetch("https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1", API_OPTIONS);
@@ -13,7 +13,7 @@ const useUpComingMovies = () => {
     dispatch(addUpComingMovies(json?.results));
   };
   useEffect(() => {
-    !upcoming && getUpComingMovies();
+    !UpComingMovies && getUpComingMovies();
   }, []);
 };
 
