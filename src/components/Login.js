@@ -43,8 +43,15 @@ const Login = () => {
             photoURL: USER_AVATAR,
           })
             .then(() => {
-              const {user, email, displayName, photoURL} = auth.currentUser;
-              dispatch(addUser({user: user, email: email, displayName: displayName, photoURL:photoURL}));
+              const { user, email, displayName, photoURL } = auth.currentUser;
+              dispatch(
+                addUser({
+                  user: user,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
             })
             .catch((error) => {
               // An error occurred
@@ -80,13 +87,13 @@ const Login = () => {
   };
   return (
     <div className="flex flex-col justify-center bg-black">
-      <div className="h-screen w-full relative">
+      <img
+        src={BG_URL}
+        alt="bg-image"
+        className=" z-0 top-0 left-0 absolute brightness-50 object-cover"
+      />
+      <div className=" md:h-screen w-screen relative">
         <Header />
-        <img
-          src={BG_URL}
-          alt="bg-image"
-          className=" z-0 top-0 left-0 absolute brightness-50 h-screen w-screen object-cover"
-        />
 
         <div className="absolute left-1/2 z-10 mt-20 px-16 pb-16 -translate-x-1/2 h-fit rounded-md">
           <div className="py-12 px-[4.2rem] w-[28.2rem] relative before:bg-black before:absolute before:w-[28.2rem] before:h-full before:left-0 before:opacity-70 before:top-0 before:rounded-md">
@@ -177,9 +184,14 @@ const Login = () => {
           </div>
         </div>
       </div>
-      
-      <div className="text-zinc-400 mt-64 w-10/12 mx-auto mb-20 px-12">
-        <h1>Question? <span className="hover:underline cursor-pointer">Call 000-800-919-1694</span></h1>
+
+      <div className="text-zinc-400 mt-64 md:w-10/12 mx-auto mb-20 px-12">
+        <h1>
+          Question?{" "}
+          <span className="hover:underline cursor-pointer">
+            Call 000-800-919-1694
+          </span>
+        </h1>
         <div className="underline grid grid-cols-4 gap-y-6 gap-x-2 mt-4 text-sm ">
           <div className="cursor-pointer">FAQ</div>
           <div className="cursor-pointer">Help Center</div>
@@ -188,7 +200,9 @@ const Login = () => {
           <div className="cursor-pointer">Cookie Preferences</div>
           <div className="cursor-pointer">Corporate Information</div>
         </div>
-        <button className="text-white border border-zinc-400 py-2 px-4 mt-6 flex items-center gap-1 rounded-lg"><IoLanguage /> English <FaCaretDown /></button>
+        <button className="text-white border border-zinc-400 py-2 px-4 mt-6 flex items-center gap-1 rounded-lg">
+          <IoLanguage /> English <FaCaretDown />
+        </button>
       </div>
     </div>
   );
