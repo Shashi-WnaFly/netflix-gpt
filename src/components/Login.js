@@ -86,16 +86,15 @@ const Login = () => {
     setIsSignUpForm(!isSignUpForm);
   };
   return (
-    <div className="flex flex-col justify-center bg-black">
+    <div className="flex flex-col bg-black relative md:w-screen w-screen">
       <img
         src={BG_URL}
         alt="bg-image"
-        className=" z-0 top-0 left-0 absolute brightness-50 object-cover"
+        className=" absolute top-0 left-0 brightness-50 object-cover h-screen w-screen"
       />
-      <div className=" md:h-screen w-screen relative">
-        <Header />
-
-        <div className="absolute left-1/2 z-10 mt-20 px-16 pb-16 -translate-x-1/2 h-fit rounded-md">
+      <Header />
+      <div className="h-screen w-screen relative flex justify-center">
+        <div className="absolute z-10 mt-20 pb-16 rounded-md">
           <div className="py-12 px-[4.2rem] w-[28.2rem] relative before:bg-black before:absolute before:w-[28.2rem] before:h-full before:left-0 before:opacity-70 before:top-0 before:rounded-md">
             <form
               onSubmit={(e) => e.preventDefault()}
